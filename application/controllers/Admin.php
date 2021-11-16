@@ -849,17 +849,17 @@ class Admin extends CI_Controller{
             'status' => 0,
         ); 
        
-        $logs_data = array(
-            'status_reason' => $this->input->post('reason'),
-            'added_by' => $this->session->userdata('id'),
-            'created_at' => date('Y-m-d'),
-            'status' => 0,
-        ); 
+        // $logs_data = array(
+        //     'status_reason' => $this->input->post('reason'),
+        //     'added_by' => $this->session->userdata('id'),
+        //     'created_at' => date('Y-m-d'),
+        //     'status' => 0,
+        // ); 
 
 
-        $invoice_data = json_encode($logs_data, true);
-        echo "<pre>";
-        print_r($invoice_data);exit;
+        // $invoice_data = json_encode($logs_data, true);
+        // echo "<pre>";
+        // print_r($invoice_data);exit;
         if($this->admin_model->invoice_status_pending($id, $data)){
             $this->session->set_flashdata('success', '<strong>Success! </strong>Invoice status change was successful.');
             redirect('admin/invoices');

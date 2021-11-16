@@ -103,6 +103,7 @@
 												<th class="has-text-weight-semibold">Item</th>
 												<th class="has-text-weight-semibold">Amount</th>
 												<th class="has-text-weight-semibold">Date</th>
+												<th class="has-text-weight-semibold">R/Reason</th>
 												<th class="has-text-weight-semibold">Status</th>
 												<th class="has-text-weight-semibold">Action</th>
 											</tr>
@@ -120,6 +121,11 @@
 												<td><?= number_format($inv->amount); ?></td>
 												<td><?php if($inv->inv_date){ echo date('M d, Y', strtotime($inv->inv_date)); }else{ echo '--/--/--'; } ?>
 												</td>
+												<?php if(!empty($inv->status_reason)){?>
+												<td><?= $inv->status_reason; ?></td>
+												<?php }else{ ?>
+												<td>N/A</td>
+												<?php } ?>
 												<td><?php if($inv->status == 0){ echo "<span class='tag is-warning is-light'>Pending</span>"; }else{ echo "<span class='tag is-success is-light'>Cleared</span>"; } ?>
 												</td>
 

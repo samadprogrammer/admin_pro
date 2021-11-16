@@ -140,8 +140,8 @@
 																<td>N/A</td>
 																<?php } ?>
 															<th>Price</th>
-															<?php if(!empty($items[0]->price)) { ?>
-															<td><?= $items[0]->price; ?></td>
+															<?php if(empty($items[0]->price)) { ?>
+															<td id="price"><?php echo '<span>'.$items[0]->price.'</span>'; ?></td>
 															<?php } else {?>
 																<td>N/A</td>
 																<?php } ?>
@@ -153,15 +153,17 @@
 															<?php } else {?>
 																<td>N/A</td>
 																<?php } ?>
-															<th>Current Value</th>
-															<td><span id="current"></span></td>
+															<th>Current Value</th> 
+															<td><span id="current">
+															<?php $percent = $items[0]->price * $items[0]->depreciation / 100;
+															echo $current = $items[0]->price - $percent;
+															?>
+															</span></td>
 														</tr>
 														<tr>
 															<?php if(!empty($current_item)) { ?>
 															<th>Department</th>
 															<td><?= $items[0]->department; ?></td>
-															<th>Date of Joininig</th>
-															<td><?= $current_item[0]->doj; ?></td>
 														</tr>
 														<?php } ?>
 														<tr>
@@ -222,9 +224,9 @@
 															<?php } else {?>
 																<td>N/A</td>
 																<?php } ?>
-															<th>Price</th>
+															<th>Price</th>  
 															<?php if(!empty($item->price)){ ?>
-															<td><?php echo "<spanp id='price'>". $item->price.'</span>';?></td>
+															<td><?php echo "<spanp idy='price'>". $item->price.'</span>';?></td>
 															<?php } else {?>
 																<td>N/A</td>
 																<?php } ?>
@@ -247,9 +249,7 @@
 															<th>Department</th>
 															<td>
 															<?php echo $item->department; ?> 
-															</td>
-															<th>Date oF Joininig</th>
-															<td<?php echo $item->doj; ?> </td>
+															</td> 
 														</tr>
 														<tr>
 															<th>Contact</th>
@@ -274,14 +274,9 @@
 													</tbody>
 												</table>
 </div>
-										 
-
-
-
-
 										</div>
-										<span style='color: red;font-weight: bold'>This item still not assign to any
-											emplye </span>
+										<span style='color: red;font-weight: bold'>This item still not assigned to an
+											emplyee </span>
 										<?php endif; ?>
 										<div class="columns">
 											<div class="column">
@@ -290,7 +285,9 @@
 												<table class="table is-fullwidth">
 													<thead>
 														<tr>
+															<th>Emp Code</th>
 															<th>Name</th>
+															<th>Joining Date</th>
 															<th>Assign Date</th>
 															<th>Reason</th>
 															<th>Return Date</th>
@@ -311,10 +308,15 @@
 															?>
 															<?php $returned_date = $item->return_back_date;
             $returned_date = ($returned_date) ? date('M d, Y', strtotime($item->return_back_date)) : ' Still In custody';?>
-															<td> <a data-id="<?= $item->asignment_id; ?>"
-																	class="emp_detail">
+															<td> <?php echo '<span >S2S - '.ucfirst($item->user_id.'</span>')?></td>
+															<td> <a data-id="<?= $item->asignment_id; ?>"class="emp_detail">
 																	<?php echo '<span >'.ucfirst($item->emp_name.'</span>')?></a>
 															</td>
+															<?php if(isset($item->doj)){ ?>
+															<td><?= date('M d, Y', strtotime($item->doj)) ?></td>
+															<?php } else {?>
+															<td>N/A</td>
+															<?php } ?>
 															<td><?php if(!empty($item->assign_date))
             {echo date('M d, Y', strtotime($item->assign_date)).'</date>';} 
             else{
@@ -409,12 +411,13 @@
 
 <script>
 	// code to show current value of product	
-	$(document).ready(function () {
-		// var price = document.getElementById("price").innerHTML;
-		// var price = price.replace(/&nbsp;/, '');
-		// var dep = document.getElementById("dep").innerHTML;
-		// currentval = price * dep / 100;
-		// var output = document.getElementById("current").innerHTML = currentval;
+	$(document).ready(function () { 
+		var price = document.getElementById("price").innerHTML;
+		var prices = price.replace(/&nbsp;/, '');
+		var dep = document.getElementById("dep").innerHTML;
+		currentval = prices * dep / 100;
+		alert(currentval)
+		var output = document.getElementById("current").innerHTML = currentval;
 	});
 
 
