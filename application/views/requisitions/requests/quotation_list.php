@@ -96,10 +96,10 @@ $id = $this->uri->segment(3);
 											<tr>
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
-												<th class="has-text-weight-semibold"><abbr title="Depreciation Percentage">D%</abbr></th>
-												<th class="has-text-weight-semibold">Quantity</th>
+												<th class="has-text-weight-semibold">Description</th>
+												<th class="has-text-weight-semibold">Qty</th>
 												<th class="has-text-weight-semibold">Price</th>
-												<th class="has-text-weight-semibold">Requested By</th>
+												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
 												<th class="has-text-weight-semibold">Supplier</th>
 												<th class="has-text-weight-semibold">Date</th>
 												<th class="has-text-weight-semibold">Status</th>
@@ -110,10 +110,10 @@ $id = $this->uri->segment(3);
 											<tr>
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
-												<th class="has-text-weight-semibold"><abbr title="Depreciation Percentage">D%</abbr></th>
-												<th class="has-text-weight-semibold">Quantity</th>
+												<th class="has-text-weight-semibold">Description</th>
+												<th class="has-text-weight-semibold">Qty</th>
 												<th class="has-text-weight-semibold">Price</th>
-												<th class="has-text-weight-semibold">Requested By</th>
+												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
 												<th class="has-text-weight-semibold">Supplier</th>
 												<th class="has-text-weight-semibold">Date</th>
 												<th class="has-text-weight-semibold">Status</th>

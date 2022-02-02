@@ -149,9 +149,15 @@ th, td {
             padding: 10px; 
             float:left;
             overflow: hidden;
-            transition: 1000;
+            transition: 10000;
       }
       aside{
-            background: #198754;
+            background: #13cba9;
+      }
+      .menu-label{
+            color: #fff;
+      }
+      #req{
+            color: #fff;
       }
     }

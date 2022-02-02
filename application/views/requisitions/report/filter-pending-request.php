@@ -48,7 +48,7 @@
 								<a href="<?= base_url("Requisition_report/process_request_report") ?>"
 									class="button is-small <?= (isset($process_request_report)) ? 'has-background-primary-light' : '' ?>">
 									<span class="icon is-small">
-										<i class="fas fa-plus"></i>
+										<i class="fas fa-list"></i>
 									</span>
 									<span>Process</span>
 								</a>
@@ -57,7 +57,7 @@
 								<a href="<?= base_url("Requisition_report/approved_request_report") ?>"
 									class="button is-small <?= (isset($approved_request_report)) ? 'has-background-primary-light' : '' ?>">
 									<span class="icon is-small">
-										<i class="fas fa-plus"></i>
+										<i class="fas fa-list"></i>
 									</span>
 									<span>Approved</span>
 								</a>
@@ -67,7 +67,7 @@
 								<a href='<?= base_url('requisitions/add_request'); ?>' data-target="#add_supplier"
 									class="button is-small <?= (isset($add_asset)) ? 'has-background-primary-light' : '' ?>">
 									<span class="icon is-small">
-										<i class="fas fa-plus"></i>
+										<i class="fas fa-list"></i>
 									</span>
 									<span>Add Request</span>
 								</a>
@@ -108,15 +108,15 @@ $id = $this->uri->segment(3);
 						<div class="tile is-child box">
 							<div class="columns" style="display: grid">
 								<div class="column table-container ">
-									<table class="table is-hoverable table-sm is-fullwidth">
+									<table class="table is-hoverable table-sm is-fullwidth" id="myTable">
 										<thead>
 											<tr>
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
 												<th class="has-text-weight-semibold">Description</th>
-												<th class="has-text-weight-semibold">Requested By</th>
+												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
 												<th class="has-text-weight-semibold">Quantity</th>
-												<th class="has-text-weight-semibold">Request Date</th>
+												<th class="has-text-weight-semibold"><abbr title="Request Date">Req Date</abbr></th>
 												<th class="has-text-weight-semibold">Status</th>
 												<th class="has-text-weight-semibold is-hidden-print" id="action">Action</th>
 											</tr>
@@ -126,9 +126,9 @@ $id = $this->uri->segment(3);
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
 												<th class="has-text-weight-semibold">Description</th>
-												<th class="has-text-weight-semibold">Requested By</th>
+												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
 												<th class="has-text-weight-semibold">Quantity</th>
-												<th class="has-text-weight-semibold">Request Date</th>
+												<th class="has-text-weight-semibold"><abbr title="Request Date">Req Date</abbr></th>
 												<th class="has-text-weight-semibold">Status</th>
 												<th class="has-text-weight-semibold">Action</th>
 											</tr>
@@ -201,7 +201,7 @@ $id = $this->uri->segment(3);
 												<span class="tag is-danger is-light">Rejected </span>
 												</td>
 												<?php endif ?>
-												<td class="is-narrow">
+												<td class="is-narrow is-hidden-print">
 													<div class="field has-addons">
 														<p class="control">
 															<a href="<?= base_url('requisitions/view_request/'.$res->id); ?>"
@@ -252,7 +252,7 @@ $id = $this->uri->segment(3);
 									<span>Print</span>
 								</button>
 								<a href="javascript:exportTableToExcel('myTable','Item  Records');" type="button"
-									class="button is-small ">
+									class="button is-small exporttable">
 									<span class="icon is-small">
 										<i class="fas fa-file-export"></i>
 									</span>
@@ -272,10 +272,61 @@ $id = $this->uri->segment(3);
 		})
 	})
 
+// code to export report
+function exportTableToExcel(tableId, filename) {
+		let dataType = 'application/vnd.ms-excel';
+		let extension = '.xls';
 
- // Hide tfoot when table search returns empty
- $('.exporttable').click(function () {
+		let base64 = function (s) {
+			return window.btoa(unescape(encodeURIComponent(s)))
+		};
+
+		let template =
+			'<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>';
+		let render = function (template, content) {
+			var r1 = template.replace(/{(\w+)}/g, function (m, p) {
+				return content[p];
+			});
+			var r2 = r1.replace(/{(\w+)}/g, function (m, p) {
+				return content[p];
+			});
+			return r2
+		};
+
+		let tableElement = document.getElementById(tableId);
+
+		let tableExcel = render(template, {
+			worksheet: filename,
+			table: tableElement.innerHTML
+		});
+
+		filename = filename + extension;
+
+		if (navigator.msSaveOrOpenBlob) {
+			let blob = new Blob(
+				['\ufeff', tableExcel], {
+					type: dataType
+				}
+			);
+
+			navigator.msSaveOrOpenBlob(blob, filename);
+		} else {
+			let downloadLink = document.createElement("a");
+
+			document.body.appendChild(downloadLink);
+
+			downloadLink.href = 'data:' + dataType + ';base64,' + base64(tableExcel);
+
+			downloadLink.download = filename;
+
+			downloadLink.click();
+		}
+	}
+
+// Hide tfoot when table search returns empty
+   $('.exporttable').click(function () {
   $('tfoot').remove();
   $('#action').remove();
 });
+
 </script>

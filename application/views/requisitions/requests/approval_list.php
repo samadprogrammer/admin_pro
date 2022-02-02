@@ -112,7 +112,7 @@ $id = $this->uri->segment(3);
 											<tr>
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
-												<th class="has-text-weight-semibold"><abbr title="Depreciation Percentage">D%</abbr></th>
+												<th class="has-text-weight-semibold">Description</th>
 												<th class="has-text-weight-semibold"><abbr title="Rejectction Reason">Rej Reason</abbr></th> 
 												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
 												<th class="has-text-weight-semibold">Quantity</th>
@@ -125,7 +125,7 @@ $id = $this->uri->segment(3);
 											<tr>
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
-												<th class="has-text-weight-semibold"><abbr title="Depreciation Percentage">D%</abbr></th>
+												<th class="has-text-weight-semibold">Description</th>
 												<th class="has-text-weight-semibold"><abbr title="Rejectction Reason">Rej Reason</abbr></th>
 												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
 												<th class="has-text-weight-semibold">Quantity</th>

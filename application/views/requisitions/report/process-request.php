@@ -46,7 +46,7 @@
 								<a href="<?= base_url("Requisition_report/process_request_report") ?>"
 									class="button is-small <?= (isset($process_request_report)) ? 'has-background-primary-light' : '' ?>">
 									<span class="icon is-small">
-										<i class="fas fa-plus"></i>
+										<i class="fas fa-list"></i>
 									</span>
 									<span>Process</span>
 								</a>
@@ -55,9 +55,18 @@
 								<a href="<?= base_url("Requisition_report/approved_request_report") ?>"
 									class="button is-small <?= (isset($approved_request_report)) ? 'has-background-primary-light' : '' ?>">
 									<span class="icon is-small">
-										<i class="fas fa-plus"></i>
+										<i class="fas fa-list"></i>
 									</span>
 									<span>Approved</span>
+								</a>
+							</p>
+							<p class="control">
+								<a href="<?= base_url("Requisition_report/reject_request_report") ?>"
+									class="button is-small <?= (isset($reject_request_report)) ? 'has-background-primary-light' : '' ?>">
+									<span class="icon is-small">
+										<i class="fas fa-list"></i>
+									</span>
+									<span>Reject</span>
 								</a>
 							</p>
 						</div>
