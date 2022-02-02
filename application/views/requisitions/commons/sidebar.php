@@ -107,7 +107,6 @@
 <script>
 $(document).ready(function(){
 	$(".toggle").click(function(){ 
-
 		$("aside").animate({
                 width: "toggle"
             });
