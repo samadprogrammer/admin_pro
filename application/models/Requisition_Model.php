@@ -551,7 +551,7 @@ public function user_asset_list($limit, $offset){
         $this->db->where('item_requisitions.status', null);
     }if($report == "filter_approved_request"){
         $this->db->where('item_requisitions.status', '1');
-    }if($report == "reject_request_report"){
+    }if($report == "filter_reject_request"){
         $this->db->where('item_requisitions.status', '0');
     }
 

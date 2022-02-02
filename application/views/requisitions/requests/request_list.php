@@ -120,9 +120,9 @@ $id = $this->uri->segment(3);
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
 												<th class="has-text-weight-semibold">Description</th>
-												<th class="has-text-weight-semibold">Requested By</th>
-												<th class="has-text-weight-semibold">Quantity</th>
-												<th class="has-text-weight-semibold">Request Date</th>
+												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
+												<th class="has-text-weight-semibold">Qty</th>
+												<th class="has-text-weight-semibold"><abbr title="Request Date">Req Date</abbr></th>
 												<th class="has-text-weight-semibold">Status</th>
 												<th class="has-text-weight-semibold is-hidden-print" id="action">Action</th>
 											</tr>
@@ -132,9 +132,9 @@ $id = $this->uri->segment(3);
 												<th class="has-text-weight-semibold">ID</th>
 												<th class="has-text-weight-semibold">Item</th>
 												<th class="has-text-weight-semibold">Description</th>
-												<th class="has-text-weight-semibold">Requested By</th>
-												<th class="has-text-weight-semibold">Quantity</th>
-												<th class="has-text-weight-semibold">Request Date</th>
+												<th class="has-text-weight-semibold"><abbr title="Requested By">Req By</abbr></th>
+												<th class="has-text-weight-semibold">Qty</th>
+												<th class="has-text-weight-semibold"><abbr title="Request Date">Req Date</abbr></th>
 												<th class="has-text-weight-semibold">Status</th>
 												<th class="has-text-weight-semibold">Action</th>
 											</tr>
@@ -256,14 +256,7 @@ $id = $this->uri->segment(3);
 										<i class="fas fa-print"></i>
 									</span>
 									<span>Print</span>
-								</button>
-								<a href="javascript:exportTableToExcel('myTable','Item  Records');" type="button"
-									class="button is-small ">
-									<span class="icon is-small">
-										<i class="fas fa-file-export"></i>
-									</span>
-									<span>Export</span>
-								</a>
+								</button> 
 							</div>
 						</div>
 					</div>

@@ -59,6 +59,17 @@ public function approved_request_report(){
     $data['breadcrumb'] = array("requisitions/report/approved-request" => "Approved Request");
     $this->load->view('admin/commons/new_template', $data);
 } 
+
+public function reject_request_report(){ 
+    $data['title'] = 'Reports > Reports';
+    $data['body'] = 'requisitions/report/reject_request_report'; 
+    $data['locations'] = $this->Requisition_Model->get_item_location(); 
+    $data['departments'] = $this->Requisition_Model->department();
+    $data['companies'] = $this->Requisition_Model->get_company();
+    $data['reject_request_report'] = true;
+    $data['breadcrumb'] = array("requisitions/report/reject-request" => "Reject Request");
+    $this->load->view('admin/commons/new_template', $data);
+} 
   // employee against location 
   public function city_user($loc_id){
     $location = $this->Requisition_Model->employee_against_location($loc_id);
@@ -75,9 +86,7 @@ public function approved_request_report(){
         'item' => $this->input->get('item'),
         'model' => $this->input->get('model'),
         'quantity' => $this->input->get('quantity'), 
-    );
-    // echo "<pre>";
-    // print_r($data);
+    ); 
     $limit = 25;
     if($this->input->get('limit')) {
         $limit = $this->input->get('limit');
@@ -203,8 +212,8 @@ $data['results'] = $this->Requisition_Model->filter_request($limit, $offset,$dat
 $this->load->view('admin/commons/new_template', $data);        
 }
  // Invoices - Add invoice into the database.
- public function reject_request_report($offset = null){
-    $report = $this->uri->segment(2);
+ public function filter_reject_request($offset = null){
+    $report = $this->uri->segment(2); 
    $data = array(
        'city' => $this->input->get('city'),
        'company' => $this->input->get('company'),
