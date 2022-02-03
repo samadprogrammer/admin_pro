@@ -53,7 +53,7 @@
 									<span>Add Request</span>
 								</a>
 							</p>
-							<?php if($ApprovalAccess->write == 1) : ?>
+							<!-- <?php if($ApprovalAccess->write == 1) : ?>
 							<p class="control">
 								<a href='<?= base_url('requisitions/add_request'); ?>' data-target="#add_supplier"
 									class="button is-small <?= (isset($add_asset)) ? 'has-background-primary-light' : '' ?>">
@@ -63,7 +63,7 @@
 									<span>Add Request</span>
 								</a>
 							</p>
-							<?php endif ?>
+							<?php endif ?> -->
 						</div>
 					</div>
 				</div>

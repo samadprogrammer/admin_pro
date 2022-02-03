@@ -152,12 +152,12 @@ th, td {
             transition: 10000;
       }
       aside{
-            background: #13cba9;
+            background: rgb(54, 173, 167);
       }
       .menu-label{
             color: #fff;
       }
       #req{
-            color: #fff;
+            color: red;
       }
     }
